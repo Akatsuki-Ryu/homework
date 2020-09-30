@@ -59,7 +59,7 @@ export class AppComponent {
     });
 
     if (this.updatelock === 1) {
-      this.displaymessage = 'loading';
+      this.displaymessage = '';
     }
     let keys = Object.keys(this.serverData);
     // console.log(keys);
