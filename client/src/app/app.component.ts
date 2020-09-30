@@ -17,7 +17,7 @@ export class AppComponent {
 
   title = 'client';
 
-  backendaddress: string = 'http://0.0.0.0:5111'
+  backendaddress: string = 'http://89.27.83.105:5111'
 
   serverData: JSON;
   inputurlresponse: JSON;
