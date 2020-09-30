@@ -17,6 +17,7 @@ export class AppComponent {
 
   title = 'client';
 
+  backendaddress: string = 'http://0.0.0.0:5111'
 
   serverData: JSON;
   inputurlresponse: JSON;
@@ -51,7 +52,7 @@ export class AppComponent {
 
   watchdog() {
     this.updatelock = 1;
-    this.httpClient.get('http://0.0.0.0:5111/watch').subscribe(data => {
+    this.httpClient.get(this.backendaddress + '/watch').subscribe(data => {
       this.serverData = data as JSON;
       console.log(this.serverData);
       this.updatelock = 0;
@@ -93,13 +94,13 @@ export class AppComponent {
         return;
       } else {
         if (this.inputkeywordval === undefined) {
-          this.httpClient.get('http://0.0.0.0:5111/input/' + this.inputurlval).subscribe(data => {
+          this.httpClient.get(this.backendaddress + '/input/' + this.inputurlval).subscribe(data => {
             this.inputurlresponse = data as JSON;
             console.log(this.inputurlresponse);
           });
           this.displaymessage = JSON.stringify(this.inputurlresponse);
         } else {
-          this.httpClient.get('http://0.0.0.0:5111/input/' + this.inputurlval + '&&' + this.inputkeywordval).subscribe(data => {
+          this.httpClient.get(this.backendaddress + '/input/' + this.inputurlval + '&&' + this.inputkeywordval).subscribe(data => {
             this.inputurlresponse = data as JSON;
             console.log(this.inputurlresponse);
           });
@@ -113,13 +114,13 @@ export class AppComponent {
         return;
       } else {
         if (this.inputkeywordval === undefined) {
-          this.httpClient.get('http://0.0.0.0:5111/input/' + this.inputurlval + '/' + this.inputfreqval).subscribe(data => {
+          this.httpClient.get(this.backendaddress + '/input/' + this.inputurlval + '/' + this.inputfreqval).subscribe(data => {
             this.inputurlresponse = data as JSON;
             console.log(this.inputurlresponse);
           });
           this.displaymessage = JSON.stringify(this.inputurlresponse);
         } else {
-          this.httpClient.get('http://0.0.0.0:5111/input/' + this.inputurlval + '&&' + this.inputkeywordval + '/' + this.inputfreqval).subscribe(data => {
+          this.httpClient.get(this.backendaddress + '/input/' + this.inputurlval + '&&' + this.inputkeywordval + '/' + this.inputfreqval).subscribe(data => {
             this.inputurlresponse = data as JSON;
             console.log(this.inputurlresponse);
           });
@@ -133,7 +134,7 @@ export class AppComponent {
 
 
   killwatchdog() {
-    this.httpClient.get('http://0.0.0.0:5111/kill').subscribe(data => {
+    this.httpClient.get(this.backendaddress + '/kill').subscribe(data => {
       this.killmessage = data as JSON;
       console.log(this.killmessage);
       this.serveritemlist = [];
