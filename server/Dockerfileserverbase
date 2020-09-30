@@ -1,0 +1,30 @@
+FROM python:3.8
+
+RUN python -m pip install --upgrade pip
+RUN pip install flask flask-jsonpify flask-sqlalchemy flask-restful
+RUN pip install -U flask-cors
+RUN pip install requests
+RUN pip install null
+
+
+#EXPOSE 5111:5111
+
+#WORKDIR /app
+#COPY server.py .
+
+
+#CMD ["python", "./server.py"]
+#CMD ["ping", "127.0.0.1"]
+
+
+
+
+#FROM python:slim
+#
+#COPY app.py /app/af
+#WORKDIR /app
+#RUN pip install flask
+#RUN export FLASK_APP=app.py
+#
+#EXPOSE 5000
+#CMD ["/usr/local/bin/flask", "run", "--host", "0.0.0.0"]

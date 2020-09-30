@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>website availibility backend</title>
+
+    <link href="https://uploads-ssl.webflow.com/5f6e02bcf7fc2bfa93c4ebe2/css/akas-ultra-awesome-project.webflow.c639f62e9.css"
+          rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">WebFont.load({google: {families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"]}});</script>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"
+            type="text/javascript"></script><![endif]-->
+    <script type="text/javascript">!function (o, c) {
+        var n = c.documentElement, t = " w-mod-";
+        n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+    }(window, document);</script>
+
+</head>
+<body>
+<div class="section cc-store-home-wrap">
+    <div class="intro-header">
+        <div class="intro-content cc-homepage">
+            <div class="intro-text">
+                <div class="heading-jumbo">website availibility backend</div>
+                <div class="paragraph-bigger cc-bigger-white-light">monitors web sites and reports their
+                    availability<br/></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="container">
+            <div class="motto-wrap">
+                <div class="heading-jumbo-small">task description</div>
+            </div>
+            <div class="about-story-wrap"><p class="paragraph">Implement a program that monitors web sites and reports
+                their availability. This tool is intended as a monitoring tool for web site administrators for detecting
+                problems on their sites.</p></div>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
+            <div class="motto-wrap">
+                <div class="heading-jumbo-small">Main functions:</div>
+            </div>
+            <div class="about-story-wrap"><p class="paragraph">1. Reads a list of web pages (HTTP URLs) and
+                corresponding page content requirements from extenal configuration.<br/>‍<br/>====visit <strong>&lt;serveraddress&gt;:5111/input/&lt;websiteaddress&gt;</strong>
+                to send a request (you can send multiple requests to monitor several websites. the reason to design like
+                this is to have connection with the front end , the front end can send request to monitor the
+                websites.<br/>====visit <strong>&lt;serveraddress&gt;:5111/watch</strong> to watch the result. the
+                result is provided in json format so easy to connect to the front end<br/>‍<br/>2. Periodically makes an
+                HTTP request to each page.<br/><br/>====access <strong>&lt;serveraddress&gt;:5111/input/&lt;websiteaddress&gt;/&lt;checkfrequency&gt;</strong>
+                to define the check frequency, default frequency is 5 seconds, the minimum frequency is 0.2
+                sec<br/>‍<br/>3. Verifies that the response result received from the server matches the requirements in
+                the configuration.<br/>‍<br/>====the result can be found at &lt;serveraddress&gt;:5111/watch , there is
+                a key called &quot;result&quot; is telling if the requirement matches or not , and also other
+                information can be found in there <br/>‍<br/>4. Measures the time it took for the web server to complete
+                the whole request.<br/><br/>====the result can be found at &lt;serveraddress&gt;:5111/watch , there is a
+                key called &quot;responcetime&quot; is telling the time it took to reach the server<br/>‍<br/>5. Writes
+                a log that contains the progress of the periodic checks.<br/><br/>====the log can be found at &lt;serveraddress&gt;:5111/log
+                , including all the request result in a json file format<br/>‍<br/>6. (OPTIONAL) Implement a single-page
+                HTTP server interface that shows (HTML) each monitored web site and their current (last check)
+                status.<br/><br/>==== the current status can be found at &lt;serveraddress&gt;:5111/watch <br/>====it is
+                showing all the current on going scan and the latest result.</p></div>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
+            <div class="motto-wrap">
+                <div class="heading-jumbo-small">Details:</div>
+            </div>
+            <div class="about-story-wrap"><p class="paragraph">• The “content requirement” can for example be just a
+                simple string that must be included in the response received from the server, e.g. one rule might be
+                that the page at the URL “http://www.foobar.com/login” must contain the text “Please login:”.<br/><br/>====access
+                &lt;serveraddress&gt;:5111/input/&lt;websiteaddress&gt;<strong>&amp;&amp;&lt;keyword&gt;</strong> to
+                define a content requirement keyword<br/>‍<br/>• The checking period must be configurable via a
+                command-line option or by a setting in the configuration.<br/><br/>====access &lt;serveraddress&gt;:5111/input/&lt;websiteaddress&gt;/&lt;checkfrequency&gt;
+                to define the checking period , default frequency is 5 seconds , the minimum frequency is 0.2 sec <br/>‍<br/>•
+                The log must contain the checked URLs, their status and the response times.<br/><br/>====this is a
+                sample log<br/> {&quot;google.com&amp;&amp;soemthings&quot;: {&quot;checkfreq&quot;: 5.0, &quot;keyword&quot;:
+                &quot;soemthings&quot;, &quot;responcetime&quot;: &quot;0.113223&quot;, &quot;result&quot;: &quot;website
+                up and keyword NOT found&quot;, &quot;time&quot;: &quot;2020-09-25 18:45:31.866942&quot;, &quot;url&quot;:
+                &quot;google.com&quot;}}<br/>====so it contains the check period, content keyword, response time ,
+                results of checking , checked time , checked url<br/>‍<br/>• The program must distinguish between
+                connection level problems (e.g. the web site is down) and content problems (e.g. the content
+                requirements were not fulfilled).<br/><br/>==== connection level problems includes timeout, too many
+                redirection, website not reachable . content problem includes content found , content not found , no
+                content defined .</p></div>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
+            <div class="about-story-wrap"><p class="paragraph">There is a lot of freedom to choose software
+                technologies, tools and file formats to achieve the goal.<br/><br/><span>==== this solution is based on python backend and angular frontend (the frontend is not yet including when I am writing this document , the app also has docker configs setup , can be easily deployed using docker compose . </span><br/>‍<br/>Note
+                that the task is meant for evaluating both software development and software architecture design skills.
+                Pay attention to the design of applications you create. <br/>Be ready to defend your architectural
+                decisions in a discussion.It is necessary to personally write the source code, but it does not have to
+                be complete.<br/>‍</p></div>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
+            <div class="motto-wrap">
+                <div class="heading-jumbo-small">Deliverables:</div>
+            </div>
+            <div class="about-story-wrap"><p class="paragraph">The software is delivered with the full source code
+                included. All used source code must be freely distributable.If necessary, include readme.txt to describe
+                the software and how it meets the requirements.<br/><br/>====to run the application . download the
+                package and run docker-compose up . it will setup the environment and server. <br/>====also it is fine to run on the host machine by running python server.py . the real time result is available from the console.
+            <br/></p></div>
+            <div class="divider"></div>
+        </div>
+        <div class="container">
+            <div class="motto-wrap">
+                <div class="heading-jumbo-small">Design question</div>
+            </div>
+            <div class="about-story-wrap"><p class="paragraph">Assuming we wanted to simultaneously monitor the
+                connectivity (and latencies) from multiple geographically distributed locations and collect all the data
+                to a single report that always reflects the current status across all locations. Describe how the design
+                would be different. How would you transfer the data? Security considerations?<br/><br/>====the app that
+                I made is a backend service , it can be distributed to servers where we need to send the request from .
+                the client in this case , will send a request to all the nodes , to tell them to monitor the target from
+                different place . when the nodes are done with monitoring , they can send back the client the result .
+                in that case , we will have the connection information from different geo locations . <br/><br/>==== to
+                do it in a more secure way . since the connection from the client is always considered unsafe and
+                unstable , we could setup a backend management node to talk to all the service nodes (which is the one
+                actually making the requests). client make a request to the management node to request scanning .the
+                management node will send request to service nodes over the globe. when the management node collect the
+                data , it will feed back to the client <br/><br/>====as for the security . the request sent from client
+                can be going through TLS, also it can be from an native app , which has lower risk of seeing the source
+                code and got reverse engineering, management node can be behind cloud front and load balancer. the
+                management node will make requests to the service nodes , it can be a request sent from a customised
+                protocol on a customised port . tunnelling the communication between the server nodes can be quite an
+                effective way to avoid noise and security problems . but the &quot;last one mile &quot; will be still
+                normal http request to get the accurate result. <br/><br/><br/><br/><br/>‍</p></div>
+            <div class="divider"></div>
+        </div>
+    </div>
+</div>
+
+<!--[if lte IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]--></body>
+</html>
