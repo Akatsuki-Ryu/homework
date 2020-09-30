@@ -17,7 +17,7 @@ export class AppComponent {
 
   title = 'client';
 
-  backendaddress: string = 'http://89.27.83.105:5111'
+  backendaddress: string = 'http://89.27.83.105:5111';
 
   serverData: JSON;
   inputurlresponse: JSON;
@@ -59,7 +59,7 @@ export class AppComponent {
     });
 
     if (this.updatelock === 1) {
-      this.displaymessage = 'loading';
+      this.displaymessage = '';
     }
     let keys = Object.keys(this.serverData);
     // console.log(keys);
